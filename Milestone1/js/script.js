@@ -1,4 +1,4 @@
-const images = [
+const imagesArray = [
   'lago.jpg',
   'fiume.jpg',
   'londra.jpg',
@@ -6,43 +6,49 @@ const images = [
   'case.jpg'
 ];
 
-let addImage
+let imagesTags = '';
 
 const el = document.querySelector.bind(document);
 const get = document.getElementsByClassName.bind(document);
 
-// seleziono il contenitore
-const slide = el('.wrap');
+const slider = el('.wrap');
 
-// faccio un ciclo dell'array
-for(let i = 0; i < images.length; i++){
+for(let i = 0; i < imagesArray.length; i++){
+  imagesTags += `
+  <img class="item" src="assets/img/${imagesArray[i]}" alt="${imagesArray[i]}">
+  `;
+}
 
-  addImage += `
-    <img class="item" src="assets/img/${images[i]}" alt="${images[i]}">`
-};
+let counterImages = 0;
 
-let countImages = 0;
+const prev = el('.top');
+const next = el('.down');
+prev.classList.add('hide');
 
-const next = el('.up');
-const prev = el('.down');
-
-slide.innerHTML = addImage;
+slider.innerHTML += imagesTags;
 
 const items = get('item');
 
-items[countImages].classlist.add('active');
+items[counterImages].classList.add('active');
 
 next.addEventListener('click', function(){
-  items[countImages].classlist.remove('active');
+  items[counterImages].classList.remove('active');
+  counterImages++;
+  items[counterImages].classList.add('active');
 
-  countImages++;
-  items[countImages].classlist.add('active');
-
-
-  prev.classlist.remove('hide');
-
-  if(countImages === images.length -1 ){
-    next.classlist.add('hide');
+  prev.classList.remove('hide');
+  if(counterImages === imagesArray.length -1 ){
+      next.classList.add('hide');
   }
+});
 
+prev.addEventListener('click', function(){
+  items[counterImages].classList.remove('active');
+  counterImages--;
+  items[counterImages].classList.add('active');
+  
+  next.classList.remove('hide');
+  if(counterImages === 0){
+      prev.classList.add('hide');
+  }
 });
