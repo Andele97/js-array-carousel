@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-wrap {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 50%;
+  height: 50%;
+  background-color: blue;
+}
+
+.slide {
+  height: 100%;
+  position: relative;
+}
+
+.slide img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.btn {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.60);
+  height: 35px;
+  width: 35px;
+  border-radius: 100%;
+  color: white;
+  font-size: 1.2em;
+  text-align: center;
+  line-height: 35px;
+  position: absolute;
+  right: 50%;
+}
+
+.btn.top {
+  top: 5px;
+}
+
+.btn.down {
+  bottom: 5px;
+}
+
+.btn.top:hover,
+.btn.down:hover {
+  color: black;
+  background-color: white
+}
