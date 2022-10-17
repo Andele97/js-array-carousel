@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+.hide {
+  display: block;
+}
+
 .main-wrap {
   height: 100vh;
   display: flex;
@@ -54,4 +58,12 @@
 .btn.down:hover {
   color: black;
   background-color: white
+}
+
+.item {
+  display: none;
+}
+
+.item.active {
+  display: block;
 }
